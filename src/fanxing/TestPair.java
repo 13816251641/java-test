@@ -1,6 +1,7 @@
 package fanxing;
 
 
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class TestPair {
             也是无效的:pair.setFirst(t);
 		 *
 		 */
-        T first = pair.getFirst();//因为是super所以返回类型是T
+        T first = pair.getFirst();//因为是extends所以返回类型是T
         System.out.println(first.getClass());
     }
 

@@ -1,5 +1,7 @@
 package duotai;
 
+import java.util.Date;
+
 /**
  * 多态方法执行顺序
  * 多态加载顺序优先级是this.show(o)->supper.show(o)->this.show(spper(o))->supper.show(spper(o))
@@ -23,6 +25,7 @@ public class MethodShunXu {
           System.out.println("7--" + b.show(b));//B and B
           System.out.println("8--" + b.show(c));//B and B
           System.out.println("9--" + b.show(d));//A and D
+
 	}
 }
 
