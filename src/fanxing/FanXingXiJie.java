@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 泛型细节
  * Class<?> cs 得到的是object类型的
  */
 public class FanXingXiJie {
@@ -21,6 +22,12 @@ public class FanXingXiJie {
 
     }
 
+    public static <T> T show(T t) {
+        Class<?> cs = t.getClass();//Class<?>里面元素为object
+        Object o = createElement(cs);//因为Class<?>中的元素为object
+        return null;
+    }
+
     private static <T> T createElement(Class<T> c) {
         try {
             return c.newInstance();
@@ -33,12 +40,6 @@ public class FanXingXiJie {
         }
     }
 
-
-    public static <T> T show(T t) {
-        Class<?> cs = t.getClass();//Class<?>里面元素为object
-        Object o = createElement(cs);//因为Class<?>中的元素为object
-        return null;
-    }
 
     /**
        如果使用List<?> list来接收参数的话,
