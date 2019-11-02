@@ -9,7 +9,7 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        /* 这里new了一个匿名内部类*/
+        /*这里new了一个匿名内部类*/
         Person p = new Person(){
             @Override
             public void show(){
