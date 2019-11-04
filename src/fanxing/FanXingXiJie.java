@@ -1,5 +1,6 @@
 package fanxing;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,8 +20,22 @@ public class FanXingXiJie {
 
         getElement(Arrays.asList("a", "b"));
 
+        List<Pair<?>> list = new ArrayList<>();
+        testInnerGeneric(list);
 
     }
+
+    /**
+     * List<Pair<?>> list 的入参一定要是List<Pair<?>>,不能是List<Pair>
+     * @param list
+     */
+    public static void  testInnerGeneric(List<Pair<?>> list){
+        Object first = list.get(0).getFirst();
+        System.out.println(first);
+        System.out.println(list);
+    }
+
+
 
     public static <T> T show(T t) {
         Class<?> cs = t.getClass();//Class<?>里面元素为object
