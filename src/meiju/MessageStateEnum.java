@@ -1,32 +1,24 @@
 package meiju;
 
+import lombok.Getter;
+
+/**
+ * 枚举类名驼峰即可,枚举类名建议带上Enum后缀
+ */
+@Getter
 public enum MessageStateEnum {
 
+    /*里面的字段名一律大写,单词之间下划线分割*/
     OK("ok",11),
     ERROR("error",12);
 
-    private String status;
+    private final String status;
 
-    private Integer num;
+    private final int num;
 
+    /*构造方法被默认强制是私有*/
     MessageStateEnum(String status,Integer num){
         this.status=status;
-        this.num = num;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
         this.num = num;
     }
 }
