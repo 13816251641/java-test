@@ -21,4 +21,19 @@ public enum MessageStateEnum {
         this.status=status;
         this.num = num;
     }
+
+    /**
+     *
+     * @param name 查询字段
+     * @return  枚举类
+     */
+    public static MessageStateEnum toEnum(String name) {
+        for(MessageStateEnum item : MessageStateEnum.values()) {
+            if(item.getStatus().equals(name)) {
+                return item;
+            }
+        }
+        //默认风格
+        return null;
+    }
 }
