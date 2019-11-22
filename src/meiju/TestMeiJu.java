@@ -1,9 +1,9 @@
 package meiju;
 
 /**
- * 测试枚举类
- *
- */
+        * 测试枚举类
+        *
+        */
 public class TestMeiJu {
 
     public static void main(String[] args) {
