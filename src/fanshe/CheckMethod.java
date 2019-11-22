@@ -1,36 +1,46 @@
 package fanshe;
 
+import lombok.Data;
+
 import java.lang.reflect.Method;
 
+/**
+ * åˆ©ç”¨åå°„è°ƒç”¨æ–¹æ³•
+ */
 public class CheckMethod {
 	
 	public static void main (String[] args) throws Exception {
 		Class<?> userClass = UserEntity.class;
 		UserEntity userEntity = (UserEntity)userClass.newInstance();
 		Method declaredMethod = userClass.getDeclaredMethod("repay",int.class);
+		/* privateæ–¹æ³•éœ€è¦åŠ  */
 		declaredMethod.setAccessible(true);
-		declaredMethod.invoke(userEntity,30);
-		
+		/* null å› ä¸ºè°ƒç”¨æ–¹æ³•æ˜¯voidçš„ */
+        Object invoke = declaredMethod.invoke(userEntity, 30);
+        declaredMethod.setAccessible(false);
 	}
 
 }
 
 
+@Data
+class UserEntity {
+    private String userName;
+    private int userAge;
 
-class UserEntity {    
-    private int money = 10000;
-    
-    //½èÇ®·½·¨
-    private int getMoney(){
-        System.out.println("Äã½èÁË " + money + "Ôª£¡");
+    private final int money = 10000;
+
+    //å€Ÿé’±æ–¹æ³•
+    public int getMoney(){
+        System.out.println("ä½ å€Ÿäº† " + money + "å…ƒï¼");
         return money;
     }
-    //»¹Ç®·½·¨£¬µ¥¸ö²ÎÊı
+    //è¿˜é’±æ–¹æ³•ï¼Œå•ä¸ªå‚æ•°
     private void repay(int money){
-        System.out.println("Äã»¹ÁË " + money + "Ôª£¡");
+        System.out.println("ä½ è¿˜äº† " + money + "å…ƒï¼");
     }
-    //»¹Ç®·½·¨£¬¶à¸ö²ÎÊı
-    private void repay(String userName,int money){
-        System.out.println(userName+ " »¹ÁË " + money + "Ôª£¡");
+    //è¿˜é’±æ–¹æ³•ï¼Œå¤šä¸ªå‚æ•°
+    public void repay(String userName,int money){
+        System.out.println(userName+ " è¿˜äº† " + money + "å…ƒï¼");
     }
 }
