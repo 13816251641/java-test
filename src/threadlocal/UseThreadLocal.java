@@ -11,12 +11,13 @@ public class UseThreadLocal {
         /*
             ThreadLocal的set方法默认会创建一个ThreadLocalMap类,
             ThreadLocalMap类是ThreadLocal的静态内部类,然后将这个
-            内部类赋值到Thread即当前线程的 ThreadLocal.ThreadLocalMap threadLocals
+            内部类赋值到Thread即当前线程的成员变量ThreadLocal.ThreadLocalMap threadLocals
             中去,这是创建ThreadLocalMap的过程,一个线程共用这一个
             ThreadLocalMap类,它的key是每个ThreadLocal的实例!!!
          */
         ThreadLocal<String> tl = new ThreadLocal<>();
         tl.set("av");
+        tl.get();
 
 
 
