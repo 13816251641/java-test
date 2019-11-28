@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 /**
  * @Auther ljn
  * @Date 2019/11/28
+ * handler必须要实现InvocationHandler接口
  */
 public class RedisCacheHandler implements InvocationHandler {
 
@@ -23,14 +24,18 @@ public class RedisCacheHandler implements InvocationHandler {
         System.out.println("方法调用之前做事情");
 
         /*
-             当代理对象调用真实对象的方法时，
-             其会自动的跳转到代理对象关联的handler对象的invoke方法来进行调用
-             invoke方法抛异常的话代码就结束了,如果没有捕获异常的话
+             当代理对象调用真实对象的方法时，其会自动的跳转到代理对象关联的
+             handler对象的invoke方法来进行调用,如果目前对象的代码抛异常而在
+             这里没有捕获的话,程序戛然而止
          */
-        Object invoke = method.invoke(object, args);
+        Object value = method.invoke(object, args);
 
         System.out.println("方法调用之后做事情");
 
-        return invoke;
+        /*
+          如果这里写成return null,那么调用代理类的方法的
+          时候也一直为null!!!
+        */
+        return value;
     }
 }

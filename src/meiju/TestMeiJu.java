@@ -17,7 +17,7 @@ public class TestMeiJu {
         System.out.println(mse);//OK->String类型
         System.out.println(mse.getNum());//11
         System.out.println(mse.getStatus());//ok
-        /*枚举对象的==和eques方式是一个作用看源码可知*/
+        /*枚举对象的==和equals方式是一个作用看源码可知*/
         if(mse == MessageStateEnum.OK){
             System.out.println("true");
         }else{

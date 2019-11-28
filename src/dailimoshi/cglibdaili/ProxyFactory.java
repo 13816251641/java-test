@@ -20,7 +20,7 @@ public class ProxyFactory implements MethodInterceptor {
         this.object = object;
     }
 
-    /* 给目标对象创建一个代理对象  */
+    /* 给目标对象创建一个代理对象,代理对象是目前对象的子类  */
     public Object getProxyInstance(){
         /* 1.工具类 */
         Enhancer enhancer = new Enhancer();
