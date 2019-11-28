@@ -8,7 +8,7 @@ public class ShuZuKeXieBian {
  
 	public static void main(String[] args) {
 		/*
-		 * 编译器竟然接纳了这个赋值操作。但在这里， stafflO] 与 manager[0] 引用的是同一个
+		 *    编译器竟然接纳了这个赋值操作。但在这里， stafflO] 与 manager[0] 引用的是同一个
 		      对象， 似乎我们把一个普通雇员擅自归入经理行列中了。这是一种很忌伟发生的情形，
 		      当调用 managers[0].setBonus(100) 的时候， 将会导致调用一个不存在的实例域， 进而搅
 		      乱相邻存储空间的内容。

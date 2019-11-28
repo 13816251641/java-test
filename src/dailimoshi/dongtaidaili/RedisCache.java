@@ -1,10 +1,10 @@
-package shejimoshi;
+package dailimoshi.dongtaidaili;
 
 /**
  * @Auther ljn
  * @Date 2019/11/28
  */
-public class RedisCache implements CacheManager{
+public class RedisCache implements CacheManager {
 
     @Override
     public void save(String content) {

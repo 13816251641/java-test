@@ -1,4 +1,4 @@
-package shejimoshi;
+package dailimoshi.dongtaidaili;
 
 public interface CacheManager {
 
