@@ -5,7 +5,7 @@ package dailimoshi.dongtaidaili;
  * @Date 2019/11/28
  * 动态代理的目标对象必须要实现接口!!!
  */
-public class RedisCache implements CacheManager {
+public class RedisCacheImpl implements CacheManager {
 
     @Override
     public String save(String content) {

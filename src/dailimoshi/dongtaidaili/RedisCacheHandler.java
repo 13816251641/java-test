@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 /**
  * @Auther ljn
  * @Date 2019/11/28
- * handler必须要实现InvocationHandler接口
+ * handler类必须要实现InvocationHandler接口
  */
 public class RedisCacheHandler implements InvocationHandler {
 
