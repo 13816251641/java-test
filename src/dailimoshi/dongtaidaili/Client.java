@@ -21,6 +21,7 @@ public class Client {
                 redisCache.getClass().getInterfaces(),
                 redisCacheHandler);
         String hello = cacheManager.save("hello");
+        //hello
 
     }
 }
