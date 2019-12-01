@@ -17,10 +17,11 @@ public class Client {
         /* 动态代理类实例需要的handler类 */
         RedisCacheHandler redisCacheHandler = new RedisCacheHandler(redisCacheImpl);
 
-        CacheManager cacheManagerProxy =(CacheManager) Proxy.newProxyInstance(redisCacheImpl.getClass().getClassLoader(),
+        CacheManager cacheManager =(CacheManager) Proxy.newProxyInstance(redisCacheImpl.getClass().getClassLoader(),
                 redisCacheImpl.getClass().getInterfaces(),
                 redisCacheHandler);
-        String hello = cacheManagerProxy.save("hello");
+        String hello = cacheManager.save("hello");
+        //hello
 
     }
 }
