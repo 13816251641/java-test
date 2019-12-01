@@ -4,4 +4,6 @@ public interface CacheManager {
 
     String save(String content);
 
+    void show();
+
 }

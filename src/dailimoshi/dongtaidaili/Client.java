@@ -20,7 +20,9 @@ public class Client {
         CacheManager cacheManager =(CacheManager) Proxy.newProxyInstance(redisCacheImpl.getClass().getClassLoader(),
                 redisCacheImpl.getClass().getInterfaces(),
                 redisCacheHandler);
+        /* 目标类方法A调用自己的B方法,B方法不会触发代理!!!*/
         String hello = cacheManager.save("hello");
+        //cacheManager.show();
         //hello
 
     }
