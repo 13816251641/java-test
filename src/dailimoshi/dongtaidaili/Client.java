@@ -12,15 +12,15 @@ public class Client {
     public static void main(String[] args) {
 
         /* 我们要代理的真实对象 */
-        RedisCache redisCache = new RedisCache();
+        RedisCacheImpl redisCacheImpl = new RedisCacheImpl();
 
         /* 动态代理类实例需要的handler类 */
-        RedisCacheHandler redisCacheHandler = new RedisCacheHandler(redisCache);
+        RedisCacheHandler redisCacheHandler = new RedisCacheHandler(redisCacheImpl);
 
-        CacheManager cacheManager =(CacheManager) Proxy.newProxyInstance(redisCache.getClass().getClassLoader(),
-                redisCache.getClass().getInterfaces(),
+        CacheManager cacheManagerProxy =(CacheManager) Proxy.newProxyInstance(redisCacheImpl.getClass().getClassLoader(),
+                redisCacheImpl.getClass().getInterfaces(),
                 redisCacheHandler);
-        String hello = cacheManager.save("hello");
+        String hello = cacheManagerProxy.save("hello");
 
     }
 }
