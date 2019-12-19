@@ -1,6 +1,6 @@
-package fanxing;
+package fanxing.fanxingshangxiajie;
 
-/**
+/*
    泛型的下界
    个人认为要从原始类的角度看就明白其中的缘由
  */
@@ -10,7 +10,6 @@ public class FanXingXiaJie<T> {
 
     public void setFirst(T t){
         this.t=t;
-        System.out.println(t);
     }
 
     public T getFirst(){
@@ -26,19 +25,17 @@ public class FanXingXiaJie<T> {
         System.out.println(first.getClass().getName());
 
     }
-
-
 }
 
 class Father{
 
 }
 
-class Son extends Father{
+class Son extends Father {
 
 }
 
-class Grandson extends Son{
+class Grandson extends Son {
 
 }
 
