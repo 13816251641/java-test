@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 一个地方使用了泛型,别的地方也要使用,否则就是不安全的!!!
  */
-public class WithoutGenericHasProblem1 {
+public class WithoutGenericHasProblem {
    
 	public static void main(String[] args) {
 		List<String> strings = new ArrayList<>();

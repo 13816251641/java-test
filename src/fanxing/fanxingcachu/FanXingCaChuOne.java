@@ -1,4 +1,4 @@
-package fanxing;
+package fanxing.fanxingcachu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * 会自动帮你加上对应的强转,示例可参考(String[])show(list)
  *
  */
-public class FanXingCaChu {
+public class FanXingCaChuOne {
 	public static void main(String[] args) {
         List<String> list = new ArrayList<>();
         list.add("m");

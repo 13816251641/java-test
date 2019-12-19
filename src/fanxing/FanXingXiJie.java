@@ -1,66 +1,81 @@
 package fanxing;
 
+import fanxing.fanxingshangxiajie.Pair;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * 泛型细节
- * Class<?> cs 得到的是object类型的
+ * 从Class<?> cs 得到的是object类型的
  */
 public class FanXingXiJie {
 
-    public static void main(String[] args) {
-
-        String s = "a";
-
-        String show = show(s);
-
-        String s1 = createElement(String.class);
-
-        getElement(Arrays.asList("a", "b"));
-
-        List<Pair<?>> list = new ArrayList<>();
-        testInnerGeneric(list);
-
-    }
-
     /**
-     * List<Pair<?>> list 的入参一定要是List<Pair<?>>,不能是List<Pair>
-     * @param list
+     * 测试利用Class<?>生成实体类,发现类型只是Object
+     * @throws Exception
      */
-    public static void  testInnerGeneric(List<Pair<?>> list){
-        Object first = list.get(0).getFirst();
-        System.out.println(first);
-        System.out.println(list);
+    @Test
+    public void testOne() throws Exception{
+        String s = "abc";
+        show(s);
     }
 
-
-
-    public static <T> T show(T t) {
-        Class<?> cs = t.getClass();//Class<?>里面元素为object
+    private <T> T show(T t) throws Exception{
+        Class<?> cs = t.getClass();
         Object o = createElement(cs);//因为Class<?>中的元素为object
         return null;
     }
 
-    private static <T> T createElement(Class<T> c) {
-        try {
-            return c.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } finally {
-            return null;
-        }
-    }
 
 
     /**
-       如果使用List<?> list来接收参数的话,
-       从list中取的数据类型为Object
+     * 测试利用字节码文件生成实体类
+     * @throws Exception
      */
-    private static void getElement(List<?> list) {
-        Object o = list.get(0);
+    @Test
+    public void testTwo() throws Exception{
+        String s = createElement(String.class);
     }
+
+    /**
+     *如果使用List<?>来接收参数的话,从List<?>中取的数据类型为Object
+     */
+    @Test
+    public void testThree(){
+        getElement(Arrays.asList("a", "b"));
+    }
+
+    /**
+     * List<Pair<?>>list的入参一定要是List<Pair<?>>,不能是List<Pair>或者List<Pair<String>>
+     */
+    @Test
+    public void testFour(){
+        List<Pair<?>> list = new ArrayList<>();
+        innerGeneric(list);
+    }
+
+    /**
+     * 注意这里的入参是List<Pair<?>> list
+     */
+    public void innerGeneric(List<Pair<?>> list){
+
+    }
+
+    /**
+     *取出的数据类型为Object
+     */
+    private void getElement(List<?> list) {
+        Object o = list.get(0);
+        System.out.println(o.getClass().getName());
+    }
+
+
+    private <T> T createElement(Class<T> clazz) throws Exception {
+        return clazz.newInstance();
+    }
+
+
 }

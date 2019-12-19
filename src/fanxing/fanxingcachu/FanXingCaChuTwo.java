@@ -1,16 +1,16 @@
-package fanxing;
+package fanxing.fanxingcachu;
 
 
 /**
  * 仍旧是泛型擦除的问题
  * (E[])new Object[10]泛型擦除后仍旧是Object[]
- * @param <E>
+ *
  */
-public class MyArrayList<E> {
+public class FanXingCaChuTwo<E> {
 
     private E[] elements;
 
-    public MyArrayList(){
+    public FanXingCaChuTwo(){
         elements=(E[])new Object[10];
     }
 
@@ -19,9 +19,8 @@ public class MyArrayList<E> {
     }
 
 
-
     public static void main(String[] args) {
-        MyArrayList<String> m = new MyArrayList<>();
+        FanXingCaChuTwo<String> m = new FanXingCaChuTwo<>();
         String[] elements = m.getElements();
 
     }
