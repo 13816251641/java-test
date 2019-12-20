@@ -1,8 +1,6 @@
 package test;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -23,5 +21,4 @@ public class TestMap {
             System.out.println(key+"="+value);
 		}
 	}
-
 }
