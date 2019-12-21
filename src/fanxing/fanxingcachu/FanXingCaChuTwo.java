@@ -21,6 +21,7 @@ public class FanXingCaChuTwo<E> {
 
     public static void main(String[] args) {
         FanXingCaChuTwo<String> m = new FanXingCaChuTwo<>();
+        /* [Ljava.lang.Object; cannot be cast to [Ljava.lang.String */
         String[] elements = m.getElements();
 
     }

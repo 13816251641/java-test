@@ -20,13 +20,16 @@ public class FanXingXiJie {
     @Test
     public void testOne() throws Exception{
         String s = "abc";
-        show(s);
+        String string = show(s);
     }
 
     private <T> T show(T t) throws Exception{
         Class<?> cs = t.getClass();
-        Object o = createElement(cs);//因为Class<?>中的元素为object
-        return null;
+        /* 猜想因为cs中的元素为Object,所以createElement返回Object
+         * 但运行时类型还是对的
+         */
+        Object o = createElement(cs);
+        return (T)o;
     }
 
 
@@ -65,7 +68,7 @@ public class FanXingXiJie {
     }
 
     /**
-     *取出的数据类型为Object
+     *取出的数据类型编译时为Object,运行时类型可以强转为实际类型
      */
     private void getElement(List<?> list) {
         Object o = list.get(0);

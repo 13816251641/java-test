@@ -18,9 +18,11 @@ public class GenerateFanXingShuZu {
     }
 
     private static <T> T[] createArray(T t){
-       T[] arr = (T[])Array.newInstance(t.getClass(), 5);
-       arr[0] = t;
-       return  arr;
+        /* Class<?> clazz = t.getClass(); */
+        T[] arr = (T[])Array.newInstance(t.getClass(), 5);
+        System.out.println(arr.getClass().getName());
+        arr[0] = t;
+        return  arr;
     }
 
 
