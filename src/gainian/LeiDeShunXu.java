@@ -6,6 +6,7 @@ import org.junit.Test;
 /**
  * @Auther ljn
  * @Date 2019/12/23
+ * 类中静态和非静态的顺序
  */
 public class LeiDeShunXu {
     /*
