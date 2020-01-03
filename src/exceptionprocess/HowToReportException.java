@@ -1,6 +1,7 @@
 package exceptionprocess;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 
 import java.util.Arrays;
 
@@ -20,9 +21,11 @@ public class HowToReportException {
         sample.age = 29;
         sample.name = "lujieni";
         try{
-             m = 899 / 0;
+            //throw new RuntimeException("自定义异常");
+            m = 899 / 0;
          }catch (Exception e){
             //log.error("出现异常了!!! 异常数据为:"+ Arrays.toString(checkItems),e);
+
             /* 需要重写sample的toString方法 */
             log.error("出现异常了!!! 异常数据为:"+ sample,e);
         }
