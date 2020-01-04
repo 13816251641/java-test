@@ -35,4 +35,12 @@ public class ProxyFactory {
             );
     }
 
+    public static void main(String[] args) {
+        RedisCacheImpl redisCacheImpl = new RedisCacheImpl();
+        CacheManager proxyInstance1 = (CacheManager) new ProxyFactory(redisCacheImpl).getProxyInstance();
+        CacheManager proxyInstance2 = (CacheManager) new ProxyFactory(redisCacheImpl).getProxyInstance();
+        System.out.println(proxyInstance1 == proxyInstance2);// false
+
+    }
+
 }
