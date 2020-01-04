@@ -15,11 +15,11 @@ public class TestSublist {
     public static void main(String[] args) {
         List<String> parentList = new ArrayList<>();
 
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 5; i++){ // 0 1 2 3 4
             parentList.add(String.valueOf(i));
         }
 
-        List<String> subList = parentList.subList(1, 3);
+        List<String> subList = parentList.subList(1, 3);//1 ,2
         for(String s : subList){
             System.out.println(s);//output: 1, 2
         }
