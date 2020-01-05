@@ -9,6 +9,15 @@ public class Person {
     static {
         System.out.println("Person's static code");
     }
+
+    /**
+     * 外部类访问静态内部类的成员变量
+     * 即使name属性是私有的,如果是外部类访问也能直接访问到!!!
+     */
+    public String getName(){
+        return new Hope().name;
+    }
+
     public Person(){
         System.out.println("Person");
     }
