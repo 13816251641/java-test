@@ -2,6 +2,8 @@ package fanxing.fanxingshangxiajie;
 
 /*
    泛型的上界
+   这里的返回类型是针对? extends Number 而言的,
+   即Number
  */
 public class FanXingShangJie<T> {
 
