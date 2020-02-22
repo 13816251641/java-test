@@ -35,6 +35,9 @@ public class DifferenceBetweenClassForNameAndClassLoader {
 }
 
 class ClassForName {
+    {
+        System.out.println("hello");//初始化阶段不会执行
+    }
     //静态代码块
     static {
         System.out.println("执行了静态代码块");
