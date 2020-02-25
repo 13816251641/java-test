@@ -37,7 +37,7 @@ public class TestLuanMa {
     }
 
     /**
-     * Buffer默认缓冲区的大小是8192字节
+     * Buffer默认缓冲区的大小是8192字节,每次都会将8192个字节读入缓存
      */
     @Test
     public void test02() {
