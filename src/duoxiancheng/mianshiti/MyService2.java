@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class MyService2 {
     private ReentrantLock lock = new ReentrantLock();
-    private Condition conditionB = lock.newCondition();
+    private Condition conditionB = lock.newCondition();//每个Condition都是不一样的
     private Condition conditionC = lock.newCondition();
     private int flag = 1;
 
