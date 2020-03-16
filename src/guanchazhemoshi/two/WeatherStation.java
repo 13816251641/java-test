@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Random;
 
 /*
-  加入了注册和退出
+    加入了注册和退出,实际不需要2个接口,当然2个接口的话更规范
  */
-public class WeatherStation implements Subject {
+public class WeatherStation  {
 
     private List<Observer> list;
     private String weather;
@@ -18,12 +18,10 @@ public class WeatherStation implements Subject {
         list = new ArrayList<>();
     }
 
-    @Override
     public void registerObserver(Observer observer) {
          list.add(observer);
     }
 
-    @Override
     public void removeObserver(Observer observer) {
         int index = list.indexOf(observer);
         if(index >= 0){
@@ -31,7 +29,6 @@ public class WeatherStation implements Subject {
         }
     }
 
-    @Override
     public void notifyObservers() {
         System.out.println(list.size());
         list.forEach(e->{
@@ -51,20 +48,20 @@ public class WeatherStation implements Subject {
     }
 
     public static void main(String[] args) throws Exception{
-        WeatherStation subject = new WeatherStation();
-        Student s1 = new Student(subject).setName("张三");
-        Student s2 = new Student(subject).setName("李四");
+        WeatherStation weatherStation = new WeatherStation();
+        Student s1 = new Student(weatherStation).setName("张三");
+        Student s2 = new Student(weatherStation).setName("李四");
         new Thread(()->{
             try {
                 Thread.sleep(2500);
                 System.out.println("执行了");
                 //subject.removeObserver(s1);
-                subject.registerObserver(s1);
+                weatherStation.registerObserver(s1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }).start();
-        subject.startWork();
+        weatherStation.startWork();
 
     }
 }

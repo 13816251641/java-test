@@ -9,8 +9,8 @@ public class Student implements Observer {
 
     private String name;
 
-    public Student(Subject subject){
-        subject.registerObserver(this);
+    public Student(WeatherStation weatherStation){
+        weatherStation.registerObserver(this);
     }
 
     @Override

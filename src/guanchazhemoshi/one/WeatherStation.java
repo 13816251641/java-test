@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class WeatherStation {
 
-    private List<Weather> list = new ArrayList<>();
+    private List<Weather> list = new ArrayList<>();//重点
 
     private String weathers[] = {"晴天","雨天","雪天","台风天"};
 

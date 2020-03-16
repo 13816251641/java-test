@@ -1,4 +1,4 @@
-package yufaxijie;
+package duixiangleixin;
 
 /**
  * Long类型的比较
