@@ -41,8 +41,10 @@ public class SnowFlake {
     public void show4(){
         //System.out.println(Long.toBinaryString(-1));11111111
         //System.out.println((-1)<<2);//-4
-        long l = -1L ^ (-1L << 4);
-        System.out.println(l);
+        //System.out.println(-1L ^ (-1L << 5));//2^6-1
+        long sequence = 4095;
+        sequence = (sequence + 1) & 4095;
+        System.out.println(sequence);
     }
 
 
