@@ -32,9 +32,17 @@ public class SnowFlake {
     @Test
     public void show3(){
         Long timestamp  = System.currentTimeMillis();
-        System.out.println(timestamp);
-        String result = Long.toBinaryString(timestamp);//1100
-        System.out.println(result.length());
+        System.out.println(timestamp);//1589361278195
+        String result = Long.toBinaryString(timestamp);//十进制转为2进制
+        System.out.println(result);//41位2进制
+    }
+
+    @Test
+    public void show4(){
+        //System.out.println(Long.toBinaryString(-1));11111111
+        //System.out.println((-1)<<2);//-4
+        long l = -1L ^ (-1L << 4);
+        System.out.println(l);
     }
 
 
