@@ -68,14 +68,17 @@ public class SnowflakeIdWorker {
     private final long sequenceMask = -1L ^ (-1L << sequenceBits);
 
     /**
+     * 数据中心ID(0~31)
+     */
+    private long datacenterId;
+
+
+    /**
      * 工作机器ID(0~31)
      */
     private long workerId;
 
-    /**
-     * 数据中心ID(0~31)
-     */
-    private long datacenterId;
+
 
     /**
      * 毫秒内序列(0~4095)
@@ -126,7 +129,7 @@ public class SnowflakeIdWorker {
 
         //如果是同一时间生成的，则进行毫秒内序列
         if (lastTimestamp == timestamp) {
-            sequence = (sequence + 1) & sequenceMask;
+            sequence = (sequence + 1) & sequenceMask;//(sequence+1)是否比4095大? 大:0 小:(sequence+1)
             //毫秒内序列溢出
             if (sequence == 0) {
                 //阻塞到下一个毫秒,获得新的时间戳
@@ -142,10 +145,10 @@ public class SnowflakeIdWorker {
         lastTimestamp = timestamp;
 
         //移位并通过或运算拼到一起组成64位的ID
-        return ((timestamp - twepoch) << timestampLeftShift) //
-                | (datacenterId << datacenterIdShift) //
-                | (workerId << workerIdShift) //
-                | sequence;
+        return ((timestamp - twepoch) << timestampLeftShift) //41位2进制数 左移22位
+                | (datacenterId << datacenterIdShift) //5位2进制数 左移17位
+                | (workerId << workerIdShift) //5位2进制数 左移12位
+                | sequence;//12位2进制数
     }
 
     /**

@@ -35,15 +35,16 @@ public class SnowFlake {
         System.out.println(timestamp);//1589361278195
         String result = Long.toBinaryString(timestamp);//十进制转为2进制
         System.out.println(result);//41位2进制
+        System.out.println(2|1);//00000010 | 00000001 => 3
     }
 
     @Test
     public void show4(){
-        //System.out.println(Long.toBinaryString(-1));11111111
+        //System.out.println(Long.toBinaryString(-1));11111111 负数在计算机中以补码的形式存在
         //System.out.println((-1)<<2);//-4
-        //System.out.println(-1L ^ (-1L << 5));//2^6-1
-        long sequence = 4095;
-        sequence = (sequence + 1) & 4095;
+        //System.out.println(-1L ^ (-1L << 5));//2^5-1 这个移位算法可以很快的计算出几位二进制数所能表示的最大十进制数
+        long sequence = 31;
+        sequence = (sequence + 1) & 31;//n位二进制数所能表示的最大十进制数是否超标
         System.out.println(sequence);
     }
 
