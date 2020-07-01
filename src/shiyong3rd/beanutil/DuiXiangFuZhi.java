@@ -1,9 +1,6 @@
 package shiyong3rd.beanutil;
 import org.apache.commons.beanutils.BeanUtils;
 
-import java.util.Arrays;
-import java.util.List;
-
 
 /**
    基于apache-commons-beanutils的BeanUtils.copyProperties的使用
