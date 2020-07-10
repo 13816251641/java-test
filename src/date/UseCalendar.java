@@ -1,6 +1,7 @@
 package date;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,19 +28,26 @@ public class UseCalendar {
      * 获取任意一个月的最后一天
      */
     @Test
-     public void use2() {
-         Calendar calendar = Calendar.getInstance();
-         // 假设求6月的最后一天
-         int currentMonth = 6;
-         // 先求出7月份的第一天，实际中这里6为外部传递进来的currentMonth变量
-         calendar.set(calendar.get(Calendar.YEAR), currentMonth, 1);
+    public void use2() {
+        Calendar calendar = Calendar.getInstance();
+        // 假设求6月的最后一天
+        int currentMonth = 6;
+        // 先求出7月份的第一天，实际中这里6为外部传递进来的currentMonth变量
+        calendar.set(calendar.get(Calendar.YEAR), currentMonth, 1);
 
-         calendar.add(Calendar.DATE, -1);
+        calendar.add(Calendar.DATE, -1);
 
-         // 获取日
-         int day = calendar.get(Calendar.DAY_OF_MONTH);
+        // 获取日
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-         System.out.println("6月份的最后一天为" + day + "号");
+        System.out.println("6月份的最后一天为" + day + "号");
+    }
+
+     @Test
+    public void use3(){
+      // 获取今年的天数 2020是闰年
+      int daysOfThisYear = LocalDate.now().lengthOfYear();
+      System.out.println(daysOfThisYear);
      }
 
 
