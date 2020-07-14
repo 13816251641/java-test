@@ -1,5 +1,7 @@
 package jihe;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,22 @@ public class TestSublist {
 //            System.out.println(s);
 //        }
 //        subList.get(0);
+
+    }
+
+    /**
+     * ArrayList 的 subList 结果不可强转成 ArrayList，
+     * 否则会抛出 ClassCastException 异 常：java.util.RandomAccessSubList cannot be cast to java.util.ArrayList。
+     * subList 返回的是 ArrayList 的内部类 SubList，并不是 ArrayList 而是 ArrayList 的一个视图，对
+     * 于 SubList 子列表的所有操作最终会反映到原列表上。
+     */
+    @Test
+    public void testSublistToList(){
+        List<String> parentList = new ArrayList<>();
+        parentList.add("a");
+        parentList.add("b");
+        List<String> strings = parentList.subList(0, 1);
+        System.out.println(strings);
 
     }
 

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Slf4j
 public class TestHashMap {
@@ -31,5 +32,18 @@ public class TestHashMap {
         map.put("name","Pi");
         map.put("age",20);
         System.out.println(map);
+    }
+
+    /**
+     * 使用 Map 的方法 keySet()/values()/entrySet()返回集合对象时，不可以对其进行添
+     * 加元素操作，否则会抛出 UnsupportedOperationException 异常
+     */
+    @Test
+    public void testThree(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("name","Pi");
+        map.put("age",20);
+        Set<String> strings = map.keySet();
+        strings.add("gender");
     }
 }
