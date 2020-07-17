@@ -24,5 +24,13 @@ public class TestFile {
         System.out.println(path);
     }
 
+    @Test
+    public void test02(){
+        File file = new File("f:/a/b/");//这是一个目录的地址
+        if(!file.exists()){
+            file.mkdirs();//创建多级目录
+        }
+    }
+
 
 }
