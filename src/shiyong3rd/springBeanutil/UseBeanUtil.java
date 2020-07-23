@@ -8,6 +8,9 @@ import org.springframework.beans.BeanUtils;
  * @Date 2020/6/30
  * Spring实现的BeanUtils.copyProperties是浅拷贝
  * 参数名一致类型不一致不能拷贝!!!
+ * int age  Integer age ok
+ * int age  String  age ng
+ *
  */
 public class UseBeanUtil {
 
