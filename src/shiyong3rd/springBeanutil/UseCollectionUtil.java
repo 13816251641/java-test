@@ -14,6 +14,8 @@ public class UseCollectionUtil {
         list.add("s");
         System.out.println(CollectionUtils.isEmpty(list));
 
+        System.out.println(System.currentTimeMillis());
+
     }
 
 }
