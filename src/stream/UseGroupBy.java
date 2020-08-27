@@ -38,8 +38,8 @@ public class UseGroupBy {
                 }
             }
         }
-        System.out.println(map);
-        //System.out.println(list);
+        //System.out.println(map);
+        System.out.println(list);
     }
 
     //静态内部类
