@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 public class UseCollectorsToMap {
 
     /**
+     *
+     * 测试使用stream 的 toMap 方法将list->map
+     *
      * 1.在使用 java.util.stream.Collectors 类的 toMap()方法转为 Map 集合时，一定要使
      * 用含有参数类型为 BinaryOperator，参数名为 mergeFunction 的方法，否则当出现相同 key
      * 值时会抛出 IllegalStateException 异常
@@ -20,9 +23,11 @@ public class UseCollectorsToMap {
      */
     public static void main(String[] args) {
         List<Pair<String, Double>> pairArrayList = new ArrayList<>(3);
-        pairArrayList.add(new Pair<>("version", null));
-        pairArrayList.add(new Pair<>("version", 10.24));
-        pairArrayList.add(new Pair<>("version", 13.14));
+        //pairArrayList.add(new Pair<>("version", null)); value为空时会抛异常
+        pairArrayList.add(new Pair<>("version1", 10.24));
+        pairArrayList.add(new Pair<>("version1", 10.24));
+        pairArrayList.add(new Pair<>("version1", 13.14));
+        pairArrayList.add(new Pair<>("version2", 15.38));
         Map<String, Double> result = pairArrayList.stream().collect(Collectors.toMap(e -> {
             return e.getKey();
         }, e -> {
