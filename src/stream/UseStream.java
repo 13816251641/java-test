@@ -37,7 +37,7 @@ public class UseStream {
         a.add("4444");
         for(String str:a){
             if("3333".equals(str)){
-                break;   //正常跳出循环
+                break;   //正常跳出循环,后面的-------------------会被执行
             }
             System.out.println(str);
         }

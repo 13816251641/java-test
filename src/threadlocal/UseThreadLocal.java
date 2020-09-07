@@ -20,6 +20,11 @@ public class UseThreadLocal {
         tl.set("av");
         tl.get();
 
+        ThreadLocal<String> t2 = new ThreadLocal<>();
+        t2.set("miss");
+        t2.get();
+
+        System.out.println(tl.get());
 
 
     }
