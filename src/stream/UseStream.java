@@ -1,10 +1,13 @@
 package stream;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hamcrest.internal.ArrayIterator;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UseStream {
 
@@ -58,4 +61,41 @@ public class UseStream {
         }
         System.out.println("c");
     }
+
+    /**
+     * 测试使用stream去重
+     */
+    @Test
+    public void test() {
+        List<Dish> dishList = new ArrayList<Dish>();
+        Dish dish1 = new Dish("001", "张三");
+        dishList.add(dish1);
+        Dish dish2 = new Dish("001", "李四");
+        dishList.add(dish2);
+        Dish dish3 = new Dish("002", "王五");
+        dishList.add(dish3);
+        Dish dish4 = new Dish("003", "阿森纳");
+        dishList.add(dish4);
+
+        /*
+          测试Collectors.toCollection方法：将结果收集到其它类型的集合中(这里是TreeSet)
+          TreeSet<Dish> treeSet2 = dishList.stream()
+          .collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))));
+        */
+
+        List<Dish> newDishList = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))), ArrayList::new));
+        newDishList.forEach(d -> System.out.println("id:" + d.getId() + ", name:" + d.getName()));
+
+    }
+}
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+class Dish {
+
+    private String id;
+
+    private String name;
+
 }
