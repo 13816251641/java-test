@@ -3,7 +3,6 @@ package stream;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hamcrest.internal.ArrayIterator;
 import org.junit.Test;
 
 import java.util.*;
@@ -86,6 +85,24 @@ public class UseStream {
         List<Dish> newDishList = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))), ArrayList::new));
         newDishList.forEach(d -> System.out.println("id:" + d.getId() + ", name:" + d.getName()));
 
+    }
+
+
+    /**
+     * 测试使用skip api批量插入
+     */
+    @Test
+    public void bulkInsert(){
+        List<String> list = new ArrayList<>();
+        int BULK_INSERT_COUNT = 5;
+        for(int i=1;i<=71;i++){
+            list.add(""+i);
+        }
+        int loopCount = list.size() % BULK_INSERT_COUNT > 0 ? list.size() / BULK_INSERT_COUNT + 1 : list.size() / BULK_INSERT_COUNT;
+        for ( int i = 0; i < loopCount; i++){
+            List<String> collect = list.stream().skip(i * BULK_INSERT_COUNT).limit(BULK_INSERT_COUNT).collect(Collectors.toList());
+            System.out.println(collect);
+        }
     }
 }
 
