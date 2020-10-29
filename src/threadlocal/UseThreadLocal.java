@@ -15,14 +15,20 @@ public class UseThreadLocal {
             中去,这是创建ThreadLocalMap的过程,一个线程共用这一个
             ThreadLocalMap类,它的key是每个ThreadLocal的实例!!!
             value就是这里的av
+
+            每次使用完ThreadLocal，都调用它的remove()方法，清除数据!!!
+
+
          */
         ThreadLocal<String> tl = new ThreadLocal<>();
         tl.set("av");
         tl.get();
+        tl.remove();
 
         ThreadLocal<String> t2 = new ThreadLocal<>();
         t2.set("miss");
         t2.get();
+        t2.remove();
 
         System.out.println(tl.get());
 
