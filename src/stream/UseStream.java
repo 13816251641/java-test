@@ -23,6 +23,7 @@ public class UseStream {
                 /*
                    1.return在lambda的循环中代表:跳出当前循环,继续下一轮
                    2.在lambda的循环中不允许使用break
+                   3.在lambda的循环中不允许使用continue
                  */
                 return;
             }
