@@ -17,6 +17,25 @@ import java.util.stream.Collectors;
 public class UseGroupBy {
 
     @Test
+    public void test2(){
+        Student s1 = new Student(22,"张三");
+        Student s2 = new Student(22,"李四");
+        Student s3 = new Student(8,"阿虎");
+        List<Student> list = new ArrayList<>();
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+        Map<Integer, List<Student>> result = list.stream().collect(Collectors.groupingBy(e -> e.getAge()));
+        for (Map.Entry<Integer,List<Student>> entry : result.entrySet()){
+            System.out.println(entry.getKey());
+            System.out.println(entry.getValue());
+        }
+    }
+
+
+
+
+    @Test
     public void test(){
         Student s1 = new Student(22,"张三");
         Student s2 = new Student(22,"李四");
