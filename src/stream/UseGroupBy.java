@@ -2,11 +2,11 @@ package stream;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Auther lujieni
@@ -15,6 +15,13 @@ import java.util.stream.Collectors;
  * 这里特别要注意,分组后对数据的修改是对象传递,原本的list也会受到影响!!!
  */
 public class UseGroupBy {
+    @Test
+    public void test3(){
+        Stream <String> stream = Stream.of("I", "love", "you", "too");
+        List<Integer> result = stream.map(e -> e.length()).collect(Collectors.toList());
+        System.out.println(result);
+    }
+
 
     @Test
     public void test2(){
