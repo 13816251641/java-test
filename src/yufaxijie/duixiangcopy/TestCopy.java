@@ -46,7 +46,7 @@ public class TestCopy {
         Person newPerson = new Person();
         newPerson.setName("王五");
         BeanUtils.copyProperties(newPerson,oldPerson);
-        System.out.println(newPerson);
+        System.out.println(oldPerson);
     }
 
 
