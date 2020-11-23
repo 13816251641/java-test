@@ -1,6 +1,7 @@
 package yufaxijie.duixiangcopy;
 
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 
 public class TestCopy {
 
@@ -10,11 +11,13 @@ public class TestCopy {
      */
     @Test
     public void show01() throws Exception{
-        Person person1 = new Person("张三",new Address("上海"));
-        Person person2 = (Person)person1.clone();
-        System.out.println(person1 == person2);
+        Person person1 = new Person("张三",new Address("上海"),29);
+        Person person2 = person1.clone();
+        System.out.println(person1 == person2);//false
+        System.out.println(person1.getAddress() == person2.getAddress());//false
         person2.setName("李四");
         person2.getAddress().setName("成都");
+        person2.setAge(30);
         System.out.println(person1);
         System.out.println(person2);
     }
@@ -32,4 +35,29 @@ public class TestCopy {
         System.out.println(person1);
         System.out.println(person2);
     }
+
+    /**
+     * 1.BeanUtils.copyProperties拷贝属性不排除null
+     *
+     */
+    @Test
+    public void show03(){
+        Person oldPerson = new Person("张三",new Address("上海"),29);
+        Person newPerson = new Person();
+        newPerson.setName("王五");
+        BeanUtils.copyProperties(newPerson,oldPerson);
+        System.out.println(newPerson);
+    }
+
+
+    @Test
+    public void show04(){
+        Person oldPerson = new Person();
+        oldPerson.setAge(29);
+        Person newPerson = oldPerson;
+        newPerson.setAge(88);
+        System.out.println(oldPerson);
+    }
+
+
 }

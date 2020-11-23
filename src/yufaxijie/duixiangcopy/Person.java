@@ -2,6 +2,7 @@ package yufaxijie.duixiangcopy;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /*
     对象的克隆:
@@ -10,39 +11,41 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Person implements Cloneable{
     private String name;
     private Address address;
+    private int age;
 
     /*
        覆盖了父类的方法,可见性可以扩大:protected->public
        protected:本包及其子类
      */
     @Override
-    public Object clone() throws CloneNotSupportedException {
+    public Person clone() throws CloneNotSupportedException {
         Person person = (Person) super.clone();
-        person.setAddress((Address)address.clone());
+        person.setAddress(address.clone());
         return person;
     }
+
 
     @Override
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
-                ", address.name=" + address.getName() +
+                ", address=" + address +
+                ", age=" + age +
                 '}';
     }
-
-
 }
 
 @Data
 @AllArgsConstructor
-class Address implements Cloneable{
+class Address implements Cloneable {
     private String name;
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Address clone() throws CloneNotSupportedException {
+        return (Address) super.clone();
     }
 }
