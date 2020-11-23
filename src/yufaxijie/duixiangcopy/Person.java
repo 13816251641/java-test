@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
     对象的克隆:
         1.如果一个对象需要调用clone的方法克隆,那么该对象所属的类必须实现Cloneable接口。
         2.Cloneable接口只不过是一个标识接口而已,没有任何方法。
+        3.clone()方法来自于父类Object
  */
 @Data
 @AllArgsConstructor
