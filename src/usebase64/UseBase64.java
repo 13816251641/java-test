@@ -2,11 +2,9 @@ package usebase64;
 
 import org.junit.Test;
 import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * @Auther lujieni
@@ -22,8 +20,34 @@ public class UseBase64 {
     }
 
     /**
+     * 图片转化成base64字符串
+     * 将图片文件转化为字节数组,再将字节数据转为Base64编码格式的字符串
+     */
+    @Test
+    public void test02(){
+        String imgFile = "F:\\tupian\\a.jpg";//待处理的图片
+        // 地址也有写成"F:/deskBG/86619-107.jpg"形式的
+        InputStream in = null;
+        byte[] data = null;
+        //读取图片字节数组
+        try {
+            in = new BufferedInputStream(new FileInputStream(imgFile));
+            data = new byte[in.available()];
+            in.read(data);
+            in.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        //对字节数组Base64编码
+        BASE64Encoder encoder = new BASE64Encoder();
+        System.out.println(encoder.encode(data));//返回Base64编码过的字节数组字符串
+    }
+
+    /**
      * @param imgStr base64编码字符串
      * @param path   图片路径-具体到文件
+     * String字符串解密为图片的二进制流
      */
     public static boolean generateImage(String imgStr, String path){
         if (imgStr == null)
@@ -59,4 +83,6 @@ public class UseBase64 {
             return false;
         }
     }
+
+
 }
