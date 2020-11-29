@@ -20,7 +20,8 @@ public class TestFile {
     public void test01(){
         System.out.println(File.separator);// ->"\";
         String packageName = "com.xxx.model";
-        String path = packageName.replaceAll("\\.",Matcher.quoteReplacement(File.separator));
+        String path = packageName.replaceAll("\\.",File.separator);
+       // String path = packageName.replaceAll("\\.",Matcher.quoteReplacement(File.separator));
         System.out.println(path);
     }
 
