@@ -21,6 +21,7 @@ public class Person implements Cloneable{
     /*
        覆盖了父类的方法,可见性可以扩大:protected->public
        protected:本包及其子类
+       方法的覆盖与否和返回类型有关系
      */
     @Override
     public Person clone() throws CloneNotSupportedException {
