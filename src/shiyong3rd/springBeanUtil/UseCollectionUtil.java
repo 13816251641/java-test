@@ -1,4 +1,4 @@
-package shiyong3rd.springBeanutil;
+package shiyong3rd.springBeanUtil;
 
 import org.springframework.util.CollectionUtils;
 
