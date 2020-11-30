@@ -3,6 +3,10 @@ package yufaxijie.duixiangcopy;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestCopy {
 
     /*
@@ -59,5 +63,38 @@ public class TestCopy {
         System.out.println(oldPerson);
     }
 
+    @Test
+    public void show05() throws IOException, ClassNotFoundException {
+        List<String> src = new ArrayList<>();
+        src.add("a");
+        src.add("b");
+        List<String> target = deepCopy(src);
+        src.add("c");
+        System.out.println(target);
+    }
 
+
+    public static <T> List<T> deepCopy(List<T> src) throws IOException, ClassNotFoundException {
+        /*
+            输出流
+         */
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ObjectOutputStream outputStream = new ObjectOutputStream(byteArrayOutputStream);
+        outputStream.writeObject(src);
+
+        /*
+            输出流
+         */
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+        ObjectInputStream inputStream = new ObjectInputStream(byteArrayInputStream);
+        List<T> dest = (List<T>) inputStream.readObject();
+
+        if (outputStream!=null) {
+            outputStream.close();
+        }
+        if (inputStream!=null) {
+            inputStream.close();
+        }
+        return dest;
+    }
 }
