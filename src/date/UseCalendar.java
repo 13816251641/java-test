@@ -30,7 +30,7 @@ public class UseCalendar {
     @Test
     public void use2() {
         Calendar calendar = Calendar.getInstance();
-        // 假设求6月的最后一天
+        // 假设求6月的最后一天 月份的范围为0~11 6代表7月
         int currentMonth = 6;
         // 先求出7月份的第一天，实际中这里6为外部传递进来的currentMonth变量
         calendar.set(calendar.get(Calendar.YEAR), currentMonth, 1);
@@ -42,6 +42,21 @@ public class UseCalendar {
 
         System.out.println("6月份的最后一天为" + day + "号");
     }
+
+    /**
+     * 获取昨天16点的时间
+     */
+    @Test
+    public void getYesterday16PM() {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY,16);
+        c.set(Calendar.MINUTE,0);
+        c.set(Calendar.SECOND,0);
+        c.set(Calendar.MILLISECOND,0);
+        c.add(Calendar.DAY_OF_YEAR,-1);
+        System.out.println(c.getTime());
+    }
+
 
      @Test
     public void use3(){
