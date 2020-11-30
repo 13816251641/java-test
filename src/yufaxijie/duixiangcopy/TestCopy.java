@@ -28,7 +28,7 @@ public class TestCopy {
     @Test
     public void show02() throws Exception{
         PersonWithSerialize person1 = new PersonWithSerialize("张三",new AddressWithSerialize("上海"));
-        PersonWithSerialize person2 = person1.clone();
+        PersonWithSerialize person2 = person1.cloneWithSerialize();//使用序列化方式进行拷贝
         System.out.println(person1 == person2);
         person2.setName("李四");
         person2.getAddressWithSerialize().setName("武汉");

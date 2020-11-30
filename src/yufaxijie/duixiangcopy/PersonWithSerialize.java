@@ -15,20 +15,22 @@ public class PersonWithSerialize implements Serializable {
     private String name;
     private AddressWithSerialize addressWithSerialize;
 
-    public PersonWithSerialize clone(){
+    public PersonWithSerialize cloneWithSerialize(){
         PersonWithSerialize personWithSerialize = null;
-        try {
-            // 将该对象序列化成流,因为写在流里的是对象的一个拷贝，而原对象仍然存在于JVM里面。所以利用这个特性可以实现对象的深拷贝
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
+        try(
+            /*
+                将该对象序列化成流,因为写在流里的是对象的一个拷贝，而原对象仍然存在于JVM里面。所以利用这个特性可以实现对象的深拷贝
+             */
+             ByteArrayOutputStream baos = new ByteArrayOutputStream();
+             ObjectOutputStream oos = new ObjectOutputStream(baos)
+        ) {
+
             oos.writeObject(this);
             // 将流序列化成对象
             ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
             ObjectInputStream ois = new ObjectInputStream(bais);
             personWithSerialize = (PersonWithSerialize)ois.readObject();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return personWithSerialize;
@@ -41,6 +43,6 @@ public class PersonWithSerialize implements Serializable {
 /*
    AddressWithSerialize也必须实现Serializable，否则无法序列化：
  */
-class AddressWithSerialize implements Serializable{
+class AddressWithSerialize implements Serializable {
     private String name;
 }
