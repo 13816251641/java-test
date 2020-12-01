@@ -35,7 +35,7 @@ public class UseCalendar {
         // 先求出7月份的第一天，实际中这里6为外部传递进来的currentMonth变量
         calendar.set(calendar.get(Calendar.YEAR), currentMonth, 1);
 
-        calendar.add(Calendar.DATE, -1);
+        calendar.add(Calendar.DATE, -1);//当前天数-1
 
         // 获取日
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -53,7 +53,10 @@ public class UseCalendar {
         c.set(Calendar.MINUTE,0);
         c.set(Calendar.SECOND,0);
         c.set(Calendar.MILLISECOND,0);
-        c.add(Calendar.DAY_OF_YEAR,-1);
+        /*
+            将日期加1，这通过cal.add(Calendar.DATE,1)就可以实现
+         */
+        c.add(Calendar.DATE,-1);
         System.out.println(c.getTime());
     }
 
