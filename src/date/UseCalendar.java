@@ -1,6 +1,7 @@
 package date;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -69,6 +70,47 @@ public class UseCalendar {
       // 获取今年的天数 2020是闰年
       int daysOfThisYear = LocalDate.now().lengthOfYear();
       System.out.println(daysOfThisYear);
+     }
+
+
+     /**
+      * @Description: 计算某2天相差的天数
+      * @return:
+      * @Author: lujieni
+      * @Date: 2020/12/9
+      */
+     @Test
+    public void use4() throws Exception{
+         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+         Date date1 = sdf.parse("2020-12-31");
+         Date date2 = sdf.parse("2021-01-01");
+
+         Calendar cal1 = Calendar.getInstance();
+         cal1.setTime(date1);
+
+         Calendar cal2 = Calendar.getInstance();
+         cal2.setTime(date2);
+
+         int day1 = cal1.get(Calendar.DAY_OF_YEAR);
+         int day2 = cal2.get(Calendar.DAY_OF_YEAR);
+
+         int year1 = cal1.get(Calendar.YEAR);
+         int year2 = cal2.get(Calendar.YEAR);
+
+         if (year1 != year2) {  //bu同年
+             int timeDistance = 0;
+             for (int i = year1; i < year2; i++) {
+                 if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {  //闰年
+                     timeDistance += 366;
+                 } else {  //平年
+                     timeDistance += 365;
+                 }
+             }
+             System.out.println("bu同年差"+ (timeDistance + (day2 - day1)));
+         } else { //同一年
+             System.out.println("同一年差"+ (day2 - day1));
+         }
      }
 
 
