@@ -79,7 +79,7 @@ public class UseCalendar {
       * @Author: lujieni
       * @Date: 2020/12/9
       */
-     @Test
+    @Test
     public void use4() throws Exception{
          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -112,6 +112,71 @@ public class UseCalendar {
              System.out.println("同一年差"+ (day2 - day1));
          }
      }
+
+
+
+    @Test
+    public void use5() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE,15);//15天后是几号
+        Date time = calendar.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String format = sdf.format(time);
+        System.out.println(format);
+
+    }
+
+    /**
+     * @Description:除非重新调用getTime,否则对于calendar的任何修改都不会影响到Date
+     * @param
+     * @return: void
+     * @Author: lujieni
+     * @Date: 2020/12/14
+     */
+    @Test
+    public void use6() {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY,4);//凌晨4点
+        c.set(Calendar.MINUTE,0);
+        c.set(Calendar.SECOND,0);
+        c.set(Calendar.MILLISECOND,0);
+
+        Date four = c.getTime();
+        System.out.println(four);
+
+        c.add(Calendar.DATE, -1);
+        System.out.println(four);
+    }
+
+
+    /**
+     * @Description:利用before进行比较时间Date对象的先后
+     * @param
+     * @return:
+     * @Author: lujieni
+     * @Date: 2020/12/14
+     */
+    @Test
+    public void use7() {
+        Calendar c1 = Calendar.getInstance();
+        c1.set(Calendar.HOUR_OF_DAY,4);//凌晨4点
+        c1.set(Calendar.MINUTE,0);
+        c1.set(Calendar.SECOND,0);
+        c1.set(Calendar.MILLISECOND,0);
+
+        Calendar c2 = Calendar.getInstance();
+        c2.set(Calendar.HOUR_OF_DAY,4);//凌晨4点00分01秒
+        c2.set(Calendar.MINUTE,0);
+        c2.set(Calendar.SECOND,1);
+        c2.set(Calendar.MILLISECOND,0);
+
+        if(c1.before(c2)){
+            System.out.println("c1早于c2");
+        }else{
+            System.out.println("c2早于c1");
+        }
+
+    }
 
 
 
