@@ -6,7 +6,7 @@ import java.util.Date;
  * @Auther ljn
  * @Date 2019/11/22
  * 判断2个日期是否相同,利用getTime()方法进行判断,
- * 因为Date里面维护了一个从1970年到现在的毫秒数
+ * 因为Date.getTime()返回了一个从1970年到现在的毫秒数
  */
 public class CompareDate {
 
