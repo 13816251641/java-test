@@ -24,17 +24,25 @@ public class UseCollectorsToMap {
     public static void main(String[] args) {
         List<Pair<String, Double>> pairArrayList = new ArrayList<>(3);
         //pairArrayList.add(new Pair<>("version", null)); value为空时会抛异常
+        pairArrayList.add(new Pair<>("version1", 10.14));
         pairArrayList.add(new Pair<>("version1", 10.24));
-        pairArrayList.add(new Pair<>("version1", 10.24));
-        pairArrayList.add(new Pair<>("version1", 13.14));
+        pairArrayList.add(new Pair<>("version1", 13.34));
         pairArrayList.add(new Pair<>("version2", 15.38));
         Map<String, Double> result = pairArrayList.stream().collect(Collectors.toMap(e -> {
             return e.getKey();
         }, e -> {
             return e.getValue();
         },(oldData,newData)->{
-            return newData;
+            return oldData;
         }));
+
+       /* Map<String, Double> result = pairArrayList.stream().collect(Collectors.toMap(e -> {
+            return e.getKey();
+        }, e -> {
+            return e.getValue();
+        }));*/
+
+
         System.out.println(result);
     }
 }
