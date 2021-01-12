@@ -26,14 +26,14 @@ public class UseCollectorsToMap {
         //pairArrayList.add(new Pair<>("version", null)); value为空时会抛异常
         pairArrayList.add(new Pair<>("version1", 10.14));
         pairArrayList.add(new Pair<>("version1", 10.24));
-        pairArrayList.add(new Pair<>("version1", 13.34));
+        pairArrayList.add(new Pair<>("version1", 10.34));
         pairArrayList.add(new Pair<>("version2", 15.38));
         Map<String, Double> result = pairArrayList.stream().collect(Collectors.toMap(e -> {
             return e.getKey();
         }, e -> {
             return e.getValue();
         },(oldData,newData)->{
-            return oldData;
+            return newData; //key冲突的时候 value该咋办
         }));
 
        /* Map<String, Double> result = pairArrayList.stream().collect(Collectors.toMap(e -> {
