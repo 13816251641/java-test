@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -176,6 +177,21 @@ public class UseCalendar {
             System.out.println("c2早于c1");
         }
 
+    }
+
+    @Test
+    public void use8() {
+        String photo = "/pdf/CCEI/2021-01-14/es3000008050433.png";
+        String fileName = photo.substring(photo.lastIndexOf("/")+1);
+        String photoUrl = photo.substring(0,photo.lastIndexOf("/")+1)+System.currentTimeMillis()+"-"+fileName;
+
+        System.out.println(fileName);
+        System.out.println(photoUrl);
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.asList("123,123",12).size());
     }
 
 

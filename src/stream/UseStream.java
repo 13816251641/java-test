@@ -67,7 +67,7 @@ public class UseStream {
      */
     @Test
     public void test() {
-        List<Dish> dishList = new ArrayList<Dish>();
+        List<Dish> dishList = new ArrayList<>();
         Dish dish1 = new Dish("001", "张三");
         dishList.add(dish1);
         Dish dish2 = new Dish("001", "李四");
@@ -83,9 +83,15 @@ public class UseStream {
           .collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))));
         */
 
-        List<Dish> newDishList = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))), ArrayList::new));
-        newDishList.forEach(d -> System.out.println("id:" + d.getId() + ", name:" + d.getName()));
+     /*   List<Dish> newDishList = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))), ArrayList::new));
+        newDishList.forEach(d -> System.out.println("id:" + d.getId() + ", name:" + d.getName()));*/
 
+        ArrayList list = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(e -> {
+            return e.getId();
+        }))), t -> {
+            return new ArrayList(t);
+        }));
+        System.out.println(list);
     }
 
 

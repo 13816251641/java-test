@@ -1,5 +1,7 @@
 package zhengzei;
 
+import org.junit.Test;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,6 +53,25 @@ public class ZhengZeDuiXiang {
         }
 
     }
+
+    @Test
+    public void test2(){
+        String portCode = "AAAAA";
+        if (! portCode.matches("[A-Z]{3}|[A-Z]{5}")) {
+            System.out.println("非法");
+        }
+
+    }
+
+    @Test
+    public void test3(){
+        String mail = "dffdfdf@qq.com";
+        if (! mail.matches("\\s*\\w+(?:\\.{0,1}[\\w-]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\\.[a-zA-Z]+\\s*")) {
+            System.out.println("非法");
+        }
+
+    }
+
 
 
 }

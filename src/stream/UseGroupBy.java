@@ -1,9 +1,6 @@
 package stream;
 
 import org.junit.Test;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
