@@ -114,7 +114,7 @@ public class UseStream {
 
 
     /**
-     * 通过名字，就可以看到，对这个集合的流，做一系列的中间操作后，可以调用findFirst，返回集合的第一个对象
+     * 对这个集合的流，做一系列的中间操作后，可以调用findFirst，返回集合的第一个对象
      * ifPresent有的话就执行,没有就不执行
      */
     @Test
@@ -124,6 +124,20 @@ public class UseStream {
             System.out.println(e);
         });
     }
+
+
+    /**
+     * anyMatch表示，判断的条件里，任意一个元素成功，返回true
+     *
+     */
+    @Test
+    public void useAnyMatch(){
+        List<String> list = Arrays.asList("a", "a", "a", "a", "b");
+        boolean result = list.stream().anyMatch(e -> Objects.equals(e, "b"));
+        System.out.println(result);
+    }
+
+
 }
 
 @Data
