@@ -111,6 +111,19 @@ public class UseStream {
             System.out.println(collect);
         }
     }
+
+
+    /**
+     * 通过名字，就可以看到，对这个集合的流，做一系列的中间操作后，可以调用findFirst，返回集合的第一个对象
+     * ifPresent有的话就执行,没有就不执行
+     */
+    @Test
+    public void useFindFirst(){
+        List<String> list = Arrays.asList("a","b","b","c","a");
+        list.stream().filter(e->Objects.equals(e,"b1")).findFirst().ifPresent(e->{
+            System.out.println(e);
+        });
+    }
 }
 
 @Data
