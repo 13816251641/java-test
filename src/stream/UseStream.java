@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class UseStream {
@@ -15,6 +17,7 @@ public class UseStream {
      */
     @Test
     public void testBreakLambda(){
+
 
         //lamada表达式中foreach使用break
         List<String> c = Arrays.asList("6666", "7777", "8888", "9999");
@@ -62,6 +65,7 @@ public class UseStream {
         System.out.println("c");
     }
 
+
     /**
      * 测试使用stream去重
      */
@@ -83,16 +87,18 @@ public class UseStream {
           .collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))));
         */
 
-     /*   List<Dish> newDishList = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Dish::getId))), ArrayList::new));
-        newDishList.forEach(d -> System.out.println("id:" + d.getId() + ", name:" + d.getName()));*/
-
-        ArrayList list = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(e -> {
-            return e.getId();
-        }))), t -> {
-            return new ArrayList(t);
+        ArrayList collect = dishList.stream().collect(Collectors.collectingAndThen(Collectors.toCollection(() -> {
+            return new TreeSet<Dish>(Comparator.comparing(e -> {
+                return e.getId();
+            }));
+        }), e -> {
+            return new ArrayList(e);
         }));
-        System.out.println(list);
+        System.out.println(collect);
     }
+
+
+
 
 
     /**
@@ -121,23 +127,36 @@ public class UseStream {
     public void useFindFirst(){
         List<String> list = Arrays.asList("a","b","b","c","a");
         list.stream().filter(e->Objects.equals(e,"b1")).findFirst().ifPresent(e->{
+            try {
+                Thread.sleep(1_000);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
             System.out.println(e);
         });
+        System.out.println("outer");
+        //和ifPresent里的代码是同步的,ifPresent里的代码不执行完外面的代码是不会执行的
     }
 
 
     /**
      * anyMatch表示，判断的条件里，任意一个元素成功，返回true
+     * 如果是空的list,就返回false !!!
      *
      */
     @Test
     public void useAnyMatch(){
-        List<String> list = Arrays.asList("a", "a", "a", "a", "b");
-        boolean result = list.stream().anyMatch(e -> Objects.equals(e, "b"));
+        List<String> list = Arrays.asList();
+        System.out.println(list.size());//0
+        boolean result = list.stream().anyMatch(e -> Objects.equals(e, "b"));//false
         System.out.println(result);
     }
 
-
+    @Test
+    public void test11(){
+        LocalDate localDate = LocalDate.now();
+        System.out.println(String.valueOf(localDate.getMonthValue()));
+    }
 }
 
 @Data
@@ -150,3 +169,7 @@ class Dish {
     private String name;
 
 }
+
+
+
+

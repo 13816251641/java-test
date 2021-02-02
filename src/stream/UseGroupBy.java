@@ -30,13 +30,11 @@ public class UseGroupBy {
         list.add(s2);
         list.add(s3);
         Map<Integer, List<Student>> result = list.stream().collect(Collectors.groupingBy(e -> e.getAge()));
-        for (Map.Entry<Integer,List<Student>> entry : result.entrySet()){
-            System.out.println(entry.getKey());
+        for (Map.Entry<Integer,List<Student>> entry : result.entrySet()) {
             System.out.println(entry.getValue());
         }
+
     }
-
-
 
 
     @Test
