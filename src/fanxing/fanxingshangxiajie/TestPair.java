@@ -2,6 +2,7 @@ package fanxing.fanxingshangxiajie;
 
 
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,10 +10,11 @@ import java.util.List;
  */
 public class TestPair {
     public static void main(String[] args) {
-        Pair<Integer> pair = new Pair<>(3);
+        Pair<Integer> pair = new Pair<>();
         //xiaJie(pair,123);
-        shangJie(pair,321);
-        //func(Arrays.asList(1,2,3),123);
+        //shangJie(pair,321);
+        func(Arrays.asList(1,2,3),123);
+        //func(Arrays.asList("1","2","3"),"123");
 
     }
 
@@ -39,6 +41,7 @@ public class TestPair {
 
     /**
      * 泛型T必须继承Number类,否则编译出错
+     * <T super Number> void func 不能这样写
      */
     private static <T extends Number> void func(List<T> list,T t){
          list.add(t);

@@ -15,4 +15,6 @@ public class Pair<T> {
     public Pair(T t){
         this.t=t;
     }
+    public Pair(){
+    }
 }
