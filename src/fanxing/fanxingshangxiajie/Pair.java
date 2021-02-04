@@ -7,13 +7,13 @@ package fanxing.fanxingshangxiajie;
 public class Pair<T> {
     private  T t;
     public void setFirst(T t){
-        this.t=t;
+        this.t = t;
     }
     public T getFirst(){
         return this.t;
     }
     public Pair(T t){
-        this.t=t;
+        this.t = t;
     }
     public Pair(){
     }

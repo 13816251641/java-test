@@ -10,7 +10,9 @@ package fanxing.fanxinglei;
  *
  *
  * ContainerSon <T extends Number>
- * 泛型T必须继承Number才可以
+ * 泛型 T 必须继承Number才可以
+ *
+ * ContainerSon <T super Number> 没有这种写法!!!
  *
  */
 public class ContainerSon <T extends Number> extends Container<T> {

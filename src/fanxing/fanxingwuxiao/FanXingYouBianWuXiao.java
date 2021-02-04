@@ -9,8 +9,9 @@ public class FanXingYouBianWuXiao {
     public static void main(String[] args) {
         ArrayList list = new ArrayList<String>();
         list.add(123);
+        list.add("123");
         list.forEach(i->{
-            System.out.println(i);
+            System.out.println(i.getClass().getName());
         });
 
     }

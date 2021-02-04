@@ -22,6 +22,7 @@ public class MyTest {
     @Test
     public void test02(){
         ContainerSon<? super Integer> containerSon = new ContainerSon();// ? super Integer 只要这里的Integer满足extends Number即可
+        ContainerSon<? extends Integer> containerSon2 = new ContainerSon();// ? extends Integer 只要这里的Integer满足extends Number即可
     }
 
 
