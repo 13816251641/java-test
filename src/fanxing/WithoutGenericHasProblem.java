@@ -13,9 +13,15 @@ public class WithoutGenericHasProblem {
 		unsafeAdd(strings,42);
 		String s = strings.get(0);//java.lang.ClassCastException (runtime error)
 	}
-	
+
+	/**
+	 * List list =  new ArrayList<String>();没问题,但不安全
+	 *
+	 * @param list
+	 * @param o
+	 */
 	private static void unsafeAdd(List list ,Object o) {
-		System.out.println(o.getClass().getName());
+		System.out.println(o.getClass().getName());//java.lang.Integer
 	    list.add(o);
 	}
 }

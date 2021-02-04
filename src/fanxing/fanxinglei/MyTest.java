@@ -1,5 +1,7 @@
 package fanxing.fanxinglei;
 
+import org.junit.Test;
+
 /**
  * @Package: fanxing.fanxinglei
  * @ClassName: MyTest
@@ -10,16 +12,18 @@ package fanxing.fanxinglei;
  */
 public class MyTest {
 
-    public static void main(String[] args) {
-
+    @Test
+    public void test01(){
         ContainerSon<Integer> containerSon = new ContainerSon();
 
-
         // ContainerSon<String> containerSon1 = new ContainerSon();报错,必须继承Number
-
-
-
     }
+
+    @Test
+    public void test02(){
+        ContainerSon<? super Integer> containerSon = new ContainerSon();// ? super Integer 只要这里的Integer满足extends Number即可
+    }
+
 
 
 }

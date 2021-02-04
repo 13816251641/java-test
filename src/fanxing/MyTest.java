@@ -17,7 +17,7 @@ public class MyTest {
         List list = new ArrayList();
         list.add("a");
         list.add(1);
-        List<String> abc = list;//非泛型变量可以赋值给泛型变量,但有风险
+        List<String> abc = list;//非泛型bean可以赋值给泛型bean,但有风险
         show(list);
     }
 
