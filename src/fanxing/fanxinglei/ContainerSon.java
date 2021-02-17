@@ -15,5 +15,10 @@ package fanxing.fanxinglei;
  * ContainerSon <T super Number> 没有这种写法!!!
  *
  */
-public class ContainerSon <T extends Number> extends Container<T> {
+public class ContainerSon <T extends String> extends Container<T> {
+
+    public ContainerSon(T value) {
+        super(value);
+    }
+
 }

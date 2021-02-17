@@ -1,5 +1,6 @@
 package fanxing.fanxinglei;
 
+import fanxing.fanxingshangxiajie.Pair;
 import org.junit.Test;
 
 /**
@@ -14,17 +15,36 @@ public class MyTest {
 
     @Test
     public void test01(){
-        ContainerSon<Integer> containerSon = new ContainerSon();
+        ContainerSon<String> containerSon = new ContainerSon("a");
 
-        // ContainerSon<String> containerSon1 = new ContainerSon();报错,必须继承Number
+        // ContainerSon<Integer> containerSon1 = new ContainerSon();报错,必须继承Number
     }
 
     @Test
     public void test02(){
-        ContainerSon<? super Integer> containerSon = new ContainerSon();// ? super Integer 只要这里的Integer满足extends Number即可
-        ContainerSon<? extends Integer> containerSon2 = new ContainerSon();// ? extends Integer 只要这里的Integer满足extends Number即可
+        ContainerSon<? super String> containerSon = new ContainerSon("a");// ? super String 只要这里的Integer满足extends Number即可
+        ContainerSon<? extends String> containerSon2 = new ContainerSon("b");// ? extends String 只要这里的Integer满足extends Number即可
     }
 
+    /**
+     * @Description: 利用反射实例化泛型变量
+     * @param
+     * @return:
+     * @Author: lujieni
+     * @Date: 2021/2/17
+     */
+    @Test
+    public void test03(){
+        ContainerSon<String> containerSon = makeContainerSon(String.class);
+        System.out.println(containerSon.getValue());
+    }
 
+    public static <T extends String> ContainerSon<T> makeContainerSon(Class<T> clazz){
+        try {
+            return new ContainerSon<>(clazz.newInstance());
+        } catch (Exception e) {
+           return null;
+        }
+    }
 
 }

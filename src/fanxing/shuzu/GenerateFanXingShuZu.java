@@ -1,5 +1,7 @@
 package fanxing.shuzu;
 
+import org.junit.Test;
+
 import java.lang.reflect.Array;
 
 /**
@@ -25,6 +27,29 @@ public class GenerateFanXingShuZu {
         return  arr;
     }
 
+    @Test
+    public void test01(){
+        MyArrayList<String> list = new MyArrayList();
+        list.set(0,"a");
+        String result = list.get(0);
+        System.out.println(result);
+    }
+}
 
+class MyArrayList<E>{
+    private Object[] elements;
 
+    public MyArrayList(){
+        elements = new Object[10];
+    }
+
+    public E get(int n){
+        E element = (E) elements[n];//泛型擦除后为Object
+        System.out.println(element.getClass().getName());//java.lang.String
+        return element;
+    }
+
+    public void set(int n,E e){
+        elements[n] = e;
+    }
 }
