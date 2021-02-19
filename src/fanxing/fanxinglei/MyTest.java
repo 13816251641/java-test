@@ -26,6 +26,7 @@ public class MyTest {
         ContainerSon<? extends String> containerSon2 = new ContainerSon("b");// ? extends String 只要这里的Integer满足extends Number即可
     }
 
+
     /**
      * @Description: 利用反射实例化泛型变量
      * @param
@@ -37,6 +38,13 @@ public class MyTest {
     public void test03(){
         ContainerSon<String> containerSon = makeContainerSon(String.class);
         System.out.println(containerSon.getValue());
+    }
+
+    @Test
+    public void test04(){
+        Container<Integer> container = new IntegerContainer(12);//ok
+
+        //Container<String> errorContainer = new IntegerContainer(12);//ok
     }
 
     public static <T extends String> ContainerSon<T> makeContainerSon(Class<T> clazz){
