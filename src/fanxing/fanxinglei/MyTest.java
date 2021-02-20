@@ -22,8 +22,8 @@ public class MyTest {
 
     @Test
     public void test02(){
-        ContainerSon<? super String> containerSon = new ContainerSon("a");// ? super String 只要这里的Integer满足extends Number即可
-        ContainerSon<? extends String> containerSon2 = new ContainerSon("b");// ? extends String 只要这里的Integer满足extends Number即可
+        ContainerSon<? super String> containerSon = new ContainerSon("a");// ? super String 只要这里的String满足extends String即可
+        ContainerSon<? extends String> containerSon2 = new ContainerSon("b");// ? extends String 只要这里的String满足extends String即可
     }
 
 

@@ -8,7 +8,7 @@ package fanxing.fanxingshangxiajie;
  */
 public class FanXingXiaJie<T> {
 
-    private  T t;
+    private T t;
 
     public void setFirst(T t){
         this.t=t;
