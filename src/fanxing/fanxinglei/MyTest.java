@@ -17,7 +17,7 @@ public class MyTest {
     public void test01(){
         ContainerSon<String> containerSon = new ContainerSon("a");
 
-        // ContainerSon<Integer> containerSon1 = new ContainerSon();报错,必须继承Number
+        // ContainerSon<Integer> containerSon1 = new ContainerSon();报错,必须继承String
     }
 
     @Test
@@ -40,19 +40,21 @@ public class MyTest {
         System.out.println(containerSon.getValue());
     }
 
-    @Test
-    public void test04(){
-        Container<Integer> container = new IntegerContainer(12);//ok
-
-        //Container<String> errorContainer = new IntegerContainer(12);//ok
-    }
-
     public static <T extends String> ContainerSon<T> makeContainerSon(Class<T> clazz){
         try {
             return new ContainerSon<>(clazz.newInstance());
         } catch (Exception e) {
-           return null;
+            return null;
         }
     }
+
+    @Test
+    public void test04(){
+        Container<Integer> container = new IntegerContainer(12);//ok
+
+        // Container<String> errorContainer = new IntegerContainer(12);//ng Container<String>代表泛型一定要是String
+    }
+
+
 
 }
