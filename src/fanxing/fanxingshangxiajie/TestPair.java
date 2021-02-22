@@ -2,7 +2,14 @@ package fanxing.fanxingshangxiajie;
 
 
 
+import org.junit.Test;
+import org.omg.PortableInterceptor.LOCATION_FORWARD;
+
+import java.io.File;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,7 +22,15 @@ public class TestPair {
         //shangJie(pair,321);
         //func(Arrays.asList(1,2,3),123);
         //func(Arrays.asList("1","2","3"),"123");
+    }
 
+    @Test
+    public void test01(){
+        Pair<Integer> pair = new Pair<>();
+        pair.setFirst(12);
+        Pair raw = pair;
+        raw.setFirst(new File("a"));//可以
+        Integer first = pair.getFirst();//java.lang.ClassCastException
     }
 
     private static <T> void xiaJie(Pair<? super T> pair, T t) {
