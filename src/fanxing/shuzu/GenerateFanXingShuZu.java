@@ -11,12 +11,18 @@ import java.lang.reflect.Array;
  */
 public class GenerateFanXingShuZu {
 
-    public static void main(String[] args) {
-        String a = "ccc";//创建一个String，作为泛型类型
+    public static void main(String[] args) throws Exception {
+        /*String a = "ccc";//创建一个String，作为泛型类型
         String[] arr = createArray(a);
         for(String art :arr)//循环打印
-            System.out.println(art);
+            System.out.println(art);*/
+        String[] as = huhu("a");
+        System.out.println(as.length);
+    }
 
+    private static <T> T[] huhu(T t) throws IllegalAccessException, InstantiationException {
+        T[] o = (T[])Array.newInstance(t.getClass(), 5);
+        return o;
     }
 
     private static <T> T[] createArray(T t){
