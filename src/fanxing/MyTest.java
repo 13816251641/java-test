@@ -52,13 +52,18 @@ public class MyTest {
 
         Pair<Integer> result = new Pair<>(1,2);
         maxminBonus(result);
-
+        System.out.println(result.getFirst());
+        System.out.println(result.getSecond());
     }
 
 
 
     public static void maxminBonus(Pair<? extends Number> result) {
-        hello(result);
+        useHello(result);
+    }
+
+    private static void useHello(Pair<?> pair){
+        hello(pair);
     }
 
     private static <T> void hello(Pair<T> pair){
