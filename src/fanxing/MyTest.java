@@ -33,4 +33,69 @@ public class MyTest {
     }
 
 
+
+    public static void swap(Pair<?> p) { swapHelper(p); }
+
+
+    public static <T> void swapHelper(Pair<T> p) {
+        T t = p.getFirst();
+        p.setFirst(p.getSecond());
+        p.setSecond(t);
+    }
+
+
+    public static void main(String[] args) {
+      /*  Pair<String> pair = new Pair<>("a","b");
+        swap(pair);
+        System.out.println(pair.getFirst());
+        System.out.println(pair.getSecond());*/
+
+        Pair<Integer> result = new Pair<>(1,2);
+        maxminBonus(result);
+
+    }
+
+
+
+    public static void maxminBonus(Pair<? extends Number> result) {
+        hello(result);
+    }
+
+    private static <T> void hello(Pair<T> pair){
+        T first = pair.getFirst();
+        System.out.println(first.getClass().getName());
+        pair.setFirst(pair.getSecond());
+    }
+
+
+
+
+
+
+}
+
+class Pair<T>{
+    private T first;
+    private T second;
+
+    public Pair(T first,T second){
+        this.first = first;
+        this.second = second;
+    }
+
+    public T getFirst() {
+        return first;
+    }
+
+    public void setFirst(T first) {
+        this.first = first;
+    }
+
+    public T getSecond() {
+        return second;
+    }
+
+    public void setSecond(T second) {
+        this.second = second;
+    }
 }
