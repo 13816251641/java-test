@@ -29,7 +29,7 @@ public class MyTest {
         String s1 = list.get(0);
         System.out.println(s1);
         String s2 = list.get(1);
-        System.out.println(s2);
+       System.out.println(s2);
     }
 
 
