@@ -29,7 +29,7 @@ public class MyTest {
         String s1 = list.get(0);
         System.out.println(s1);
         String s2 = list.get(1);
-        System.out.println(s2);
+       System.out.println(s2);
     }
 
 
@@ -52,13 +52,18 @@ public class MyTest {
 
         Pair<Integer> result = new Pair<>(1,2);
         maxminBonus(result);
-
+        System.out.println(result.getFirst());
+        System.out.println(result.getSecond());
     }
 
 
 
     public static void maxminBonus(Pair<? extends Number> result) {
-        hello(result);
+        useHello(result);
+    }
+
+    private static void useHello(Pair<?> pair){
+        hello(pair);
     }
 
     private static <T> void hello(Pair<T> pair){

@@ -10,9 +10,17 @@ import java.lang.reflect.Method;
 public class CheckMethod {
 	
 	public static void main (String[] args) throws Exception {
-		Class<?> userClass = UserEntity.class;
-		UserEntity userEntity = (UserEntity)userClass.newInstance();
-		Method declaredMethod = userClass.getDeclaredMethod("repay",int.class);
+
+       /*
+            这样也可以
+            UserEntity userEntity = new UserEntity();
+            Class<? extends UserEntity> clazz = userEntity.getClass();
+            UserEntity userEntity1 = clazz.newInstance();
+        */
+
+        Class<UserEntity> userClass = UserEntity.class;
+		UserEntity userEntity = userClass.newInstance();
+        Method declaredMethod = userClass.getDeclaredMethod("repay",int.class);
 		/* private方法需要加 */
 		declaredMethod.setAccessible(true);
 		/* null 因为调用方法是void的 */
