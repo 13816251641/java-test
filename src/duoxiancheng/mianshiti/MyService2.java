@@ -23,10 +23,10 @@ public class MyService2 {
         lock.lock();
         try{
             flag = 2;
-            System.out.println("taskA");//释放锁,但不会执行unlock
-            conditionB.signal();
+            System.out.println("taskA");
+            conditionB.signal();//调用signal()方法后一定要释放当前占用的锁（代码29行）
         }finally {
-            lock.unlock();
+           lock.unlock();
         }
     }
 
@@ -35,13 +35,13 @@ public class MyService2 {
        try {
            if(flag !=2) {
                try {
-                   conditionB.await();//释放锁
+                   conditionB.await();//线程等待并释放锁
                } catch (InterruptedException e) {
                    e.printStackTrace();
                }
            }
            flag = 3;
-           System.out.println("taskB");
+           System.out.println("taskB");//调用signal()方法后一定要释放当前占用的锁（代码44行）
            conditionC.signal();
        }finally {
            lock.unlock();
@@ -53,7 +53,7 @@ public class MyService2 {
         try {
             if(flag != 3){
                 try {
-                    conditionC.await();//释放锁
+                    conditionC.await();//线程等待并释放锁
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

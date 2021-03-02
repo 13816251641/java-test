@@ -7,6 +7,7 @@ package duoxiancheng.mianshiti;
  *
  * 线程在调用wait、notify、notifyAll的时候必须获得该对象的对象级别锁,想要获取
  * 该对象的对象级别锁，也就只有在同步方法或同步代码块中
+ * notifyAll基本上要和while绑定起来用了
  */
 public class MyService {
 
