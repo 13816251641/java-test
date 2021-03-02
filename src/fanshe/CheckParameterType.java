@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.List;
 import java.util.Map;
 
@@ -18,12 +19,44 @@ import java.util.Map;
  */
 public class CheckParameterType {
 
-    public void show(Map<String,Integer> map,String a){
+    public void show(Map<String,? super Integer> map,String a){
 
     }
 
+    public static <T extends Comparable<? super T>> T min(T a){
+        return a;
+    }
+
+
+
+
     public List<String> cry(){
         return null;
+    }
+
+    @Test
+    public void test03() throws ClassNotFoundException, NoSuchMethodException {
+        Class<?> clazz = Class.forName("fanshe.CheckParameterType");
+        Method min = clazz.getMethod("min",Comparable.class);
+        Type[] genericParameterTypes = min.getGenericParameterTypes();
+        /*
+        TypeVariable<Method>[] typeParameters = min.getTypeParameters();
+        for (TypeVariable typeVariable : typeParameters) {
+            System.out.println(typeVariable.getGenericDeclaration());
+            int size = typeVariable.getBounds().length;
+            System.out.println(typeVariable.getBounds()[size - 1]);
+        }*/
+
+        for (Type type:genericParameterTypes) {
+            if(type instanceof TypeVariable){
+                TypeVariable typeVariable = (TypeVariable) type;
+                int size = typeVariable.getBounds().length;
+                System.out.println(size);
+                System.out.println(typeVariable.getBounds()[size - 1]);
+            }else{
+                System.out.println(type);//打印非泛型入参 class java.lang.String
+            }
+        }
     }
 
 
