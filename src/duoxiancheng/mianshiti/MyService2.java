@@ -24,7 +24,10 @@ public class MyService2 {
         try{
             flag = 2;
             System.out.println("taskA");
-            conditionB.signal();//调用signal()方法后一定要释放当前占用的锁（代码29行）
+            /*
+              signal本身不会释放锁,调用signal()方法后一定要释放当前占用的锁（代码29行）
+            */
+            conditionB.signal();
         }finally {
            lock.unlock();
         }
