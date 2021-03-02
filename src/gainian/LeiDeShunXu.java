@@ -44,12 +44,12 @@ public class LeiDeShunXu {
 
 
     /*
-       访问public static final property;这样的属性不会触发类加载机制。
+       访问public static final property;这样的属性不会触发类的初始化
      */
     @Test
     public void test5(){
-        //System.out.println(A.i_final);
-        System.out.println(B.j_final);
+        System.out.println(A.i_final);
+        //System.out.println(B.j_final);
     }
 
 
@@ -61,7 +61,7 @@ class A{
 
     static int i = 50;
 
-    final static String i_final = new String("a");
+    final static String i_final = new String("a");//new的对象会触发初始化
 
     static {
         System.out.println("A static block");
@@ -81,7 +81,7 @@ class B extends A{
 
     static int j = 50;
 
-    final static Integer j_final = 50;
+    final static String j_final = "aaa";
 
     static {
         System.out.println("B static block");
