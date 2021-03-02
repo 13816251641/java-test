@@ -48,7 +48,7 @@ public class LeiDeShunXu {
      */
     @Test
     public void test5(){
-        System.out.println(A.i_final);
+        //System.out.println(A.i_final);
         System.out.println(B.j_final);
     }
 
@@ -61,7 +61,7 @@ class A{
 
     static int i = 50;
 
-    final  static int i_final = 50;
+    final static String i_final = new String("a");
 
     static {
         System.out.println("A static block");
@@ -79,9 +79,9 @@ class A{
 
 class B extends A{
 
-    static  int j = 50;
+    static int j = 50;
 
-    final  static int j_final = 50;
+    final static Integer j_final = 50;
 
     static {
         System.out.println("B static block");
