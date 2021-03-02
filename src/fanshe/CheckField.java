@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 /**
  * 利用反射读取字段值
- * getFields()：获得某个类的所有的公共（public）的字段，包括父类中公共（public）字段。
+ * getFields()：获得本类及其父类所有以public修饰的字段
  * getDeclaredFields()：获得某个类的所有声明的字段，即包括public、private和proteced，但是不包括父类的申明字段。
  */
 public class CheckField {
@@ -22,7 +22,7 @@ public class CheckField {
 		//System.out.println(model.getClass().getName());fanshe.Employee
 		for (Field field : model.getClass().getFields()) {
 			boolean flag = field.isAccessible();
-			field.setAccessible(true);
+			field.set(model,"av");
 			System.out.println(field.getName() + ":" + field.get(model));
 			field.setAccessible(flag);
 		}
