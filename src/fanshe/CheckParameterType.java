@@ -27,9 +27,6 @@ public class CheckParameterType {
         return a;
     }
 
-
-
-
     public List<String> cry(){
         return null;
     }
@@ -38,24 +35,11 @@ public class CheckParameterType {
     public void test03() throws ClassNotFoundException, NoSuchMethodException {
         Class<?> clazz = Class.forName("fanshe.CheckParameterType");
         Method min = clazz.getMethod("min",Comparable.class);
-        Type[] genericParameterTypes = min.getGenericParameterTypes();
-        /*
         TypeVariable<Method>[] typeParameters = min.getTypeParameters();
         for (TypeVariable typeVariable : typeParameters) {
             System.out.println(typeVariable.getGenericDeclaration());
             int size = typeVariable.getBounds().length;
             System.out.println(typeVariable.getBounds()[size - 1]);
-        }*/
-
-        for (Type type:genericParameterTypes) {
-            if(type instanceof TypeVariable){
-                TypeVariable typeVariable = (TypeVariable) type;
-                int size = typeVariable.getBounds().length;
-                System.out.println(size);
-                System.out.println(typeVariable.getBounds()[size - 1]);
-            }else{
-                System.out.println(type);//打印非泛型入参 class java.lang.String
-            }
         }
     }
 
@@ -63,7 +47,7 @@ public class CheckParameterType {
     @Test
     public void test01() throws ClassNotFoundException, NoSuchMethodException {
         Class<?> clazz = Class.forName("fanshe.CheckParameterType");
-        Method show = clazz.getMethod("show", Map.class,String.class);
+        Method show = clazz.getMethod("show",Map.class,String.class);
         Type[] genericParameterTypes = show.getGenericParameterTypes();
         for (Type type:genericParameterTypes) {
             if(type instanceof ParameterizedType){
