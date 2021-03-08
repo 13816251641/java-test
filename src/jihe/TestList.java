@@ -2,10 +2,8 @@ package jihe;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class TestList {
     /*
@@ -71,6 +69,35 @@ public class TestList {
         list.add("bao");
         String[] objects = (String[])list.toArray();//[Ljava.lang.Object; cannot be cast to [Ljava.lang.String;
         System.out.println(objects);
+    }
+
+    /**
+     *  返回迭代器后，其他线程对list的增删改对迭代器是不可见的
+     */
+    @Test
+    public void testCopyOnWriteArrayList() throws Exception{
+        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+        list.add("hello");
+        list.add("alibaba");
+        list.add("welcome");
+        list.add("to");
+        list.add("hangzhou");
+
+        Thread t = new Thread(() -> {
+            list.set(1, "baba");
+            list.remove(2);
+            list.remove(3);
+        });
+
+        Iterator<String> iterator = list.iterator();
+        t.start();
+        t.join();
+
+
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+
     }
 
 
